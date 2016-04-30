@@ -1,0 +1,237 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+	background: #121415;
+	margin: 0;
+	padding: 0;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../fonts/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../fonts/MaterialIcons-Regular.woff) format('woff'),
+       url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; 
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+div{
+	display: block;
+	position: relative;
+}
+h1,h2{
+	font-style: normal;
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+}
+#menuTop{
+	background: #08090a;
+	color: #fff;
+	padding: 2em;
+	padding-bottom: 0;
+	box-shadow: 0em -1em 2em -0.3em #000 inset;
+}
+#menuTop .heading{
+	text-align: left;
+	margin-bottom: 1em;
+}
+#popupMenu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.9);
+	display: block;
+	text-align: center;
+	z-index: 2000;
+}
+#popupMenu .menuButton{
+	text-align: center;
+	display: inline-block;
+	font-size: 12pt;
+	color: rgba(255,255,255,0.7);
+	margin: 1em;
+	transition: all .1s;
+}
+#popupMenu .menuButton i{
+	display: block;
+	font-size: 24pt;
+	color: rgba(255,255,255,1);
+	width: 1em;
+	margin: 0 auto;
+	padding: 1.2em;
+	border: solid 2px #fff;
+	border-radius: 300px;
+	transition: background .3s;
+}
+#popupMenu .menuButton i:hover{
+	background: rgba(255,255,255,0.1);
+}
+#menuHider{
+	margin: 20px;
+	margin-top: -30px;
+	margin-bottom: 0px;
+	right: 0px;
+	display: block;
+	width: 100px;
+	text-align: center;
+	padding-top: 1em;
+	background: #121415;
+	transition: all .3s;
+	box-shadow: 0em -1em 1.2em -0.3em #000;
+}
+#Content{
+	background: #121415;
+	color: #fff;
+}
+#Content .teamCard{
+	background: #fff;
+	color: #323232;
+	margin: 1em;
+}
+#Content .accent.one{
+	color: #1cb062;
+}
+#Content .accent.one.bg{
+	color: #fff;
+	background-color: #1cb062;
+}
+.teamCard .teamCard-index{
+	display: inline-block;
+	padding: 1.5em;
+}
+.teamCard .teamCard-title{
+	padding: 1.5em;
+}
+.teamCard .statss{
+	float: right;
+}
+.teamCard .statss .teamCard-stats{
+	padding: 0.6em;
+	display: inline-table;
+}
+.teamCard .statss .teamCard-stats.one{
+	background: rgba(0,255,0,0.05);
+}
+.teamCard .statss .teamCard-stats.two{
+	background: rgba(0,255,0,0.09);
+}
+.teamCard .statss .teamCard-stats.three{
+	background: rgba(0,255,0,0.13);
+}
+.teamCard-titleBar{
+	/*height: 50px;*/
+	box-shadow: 0 1px 3px -2px #000;
+}
+.teamCard-titleBar>div{
+	display: inline-block;
+}
+.teamCard-stats{
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+}
+.teamCard-stats .value{
+	display: block;
+	font-size: 16pt;
+	margin-bottom: 0;
+	padding-bottom: 0px;
+}
+.teamCard-stats .description{
+	font-size: 8pt;
+	margin: 0;
+	line-height: 1;
+}
+.teamCard .teamCard-extendedContent{
+	display: block;
+	overflow: auto;
+	width: 100%;
+}
+.teamCard-extendedContent .teamCard-markingScheme{
+	display: block;
+	overflow: auto;
+	padding: 1em;
+}
+.teamCard-extendedContent .teamCard-markingScheme .description{
+	display: inline-block;
+	padding-top: .4em;
+	width: 9em;
+}
+.teamCard-extendedContent .teamCard-markingScheme>div{
+	display: inline-block;
+	float:right;
+}
+.teamCard-extendedContent .teamCard-markingScheme>div>div{
+	display: inline-block;
+	border-radius: 3em;
+	padding: 0.5em;
+	margin: 0.2em;
+	width: 1.4em;
+	text-align: center;
+	border: solid 1px #000;
+}
+.teamCard-extendedContent.one .teamCard-markingScheme>div>div{
+	border: solid 2px #1cb062;
+	background-color: none;
+}
+.teamCard-extendedContent.one .teamCard-markingScheme>div>div.selected{
+	background-color: #1cb062;
+	color: #fff;
+}
+.teamCard-markingScheme:nth-child(even){
+	background-color: rgba(0,0,0,0.05);
+}
+.marking{
+	transition: background-color .3s;
+}
+.right{
+	float: right;
+}
+.clearfix{
+	clear: both;
+}
+
+@media screen and (max-width: 590px) {
+
+	.right{
+		float: none;
+	}
+	.right #menuHider{
+		margin: 0 auto;
+		margin-bottom: 0px;
+	}
+	#menuTop .heading{
+		text-align: center !important;
+	}
+	.teamCard-stats.three{
+		display: none !important;
+	}
+	.teamCard-markingScheme>div{
+		float: none !important;
+		text-align: center !important;
+	}
+	.teamCard-markingScheme>div>div{
+		width: 1.4em !important;
+		margin: 0em !important;
+	}
+}

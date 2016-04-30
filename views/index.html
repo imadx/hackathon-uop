@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Hackathon 2016 | Scorecard</title>
+	<link rel="stylesheet" href="css/style.css">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/underscore.js"></script>
+	<script type="text/javascript" src="js/socket.io.js"></script>
+	<script type="text/javascript" src="js/socketClient.js"></script>
+	<!-- <script type="text/javascript" src="js/autoUpdates.js"></script> -->
+</head>
+<body>
+<div id="popupMenu">
+	<div class="wrapper">
+		<div class="menuButton">
+			<i class="material-icons" onclick="Scoring.createTeamCards(); hideMenuOverlay();">format_list_bulleted</i>
+			Order by Team
+		</div>
+		<div class="menuButton">
+			<i class="material-icons" onclick="Scoring.createTeamCards(true); hideMenuOverlay();">filter_1</i>
+			Order by Rank
+		</div>
+	</div>
+</div>
+<div id="menuTop">
+	<h1 class="heading">Hackathon Scorecard</h1>
+<!-- 	<p>First name: <input data-bind="value: scores()[0].rank" /></p>
+<p>Last name: <input data-bind="value: firstName" /></p> -->
+
+
+	<div class="right">
+		<div id="menuHider"><i class="material-icons">menu</i></div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<div id="Content">
+	<br>
+<!-- 	<div class="teamCard" id="team1">
+		<div class="teamCard-titleBar">
+			<div class="teamCard-index accent one bg">1</div>
+			<div class="teamCard-title accent one">Team Name</div>
+			<div class="statss">
+				<div class="teamCard-stats one">
+					<span class="value accent one">125</span>
+					<span class="description">Your Given Score</span>
+				</div><div class="teamCard-stats two">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Score</span>
+				</div><div class="teamCard-stats three">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Rank</span>
+				</div>
+			</div>
+		</div>
+		<div class="teamCard-extendedContent one">
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Innovativeness</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Creativity</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="teamCard">
+		<div class="teamCard-titleBar">
+			<div class="teamCard-index accent one bg">1</div>
+			<div class="teamCard-title accent one">Team Name</div>
+			<div class="statss">
+				<div class="teamCard-stats one">
+					<span class="value accent one">125</span>
+					<span class="description">Your Given Score</span>
+				</div><div class="teamCard-stats two">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Score</span>
+				</div><div class="teamCard-stats three">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Rank</span>
+				</div>
+			</div>
+		</div>
+		<div class="teamCard-extendedContent one">
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Innovativeness</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Creativity</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="teamCard">
+		<div class="teamCard-titleBar">
+			<div class="teamCard-index accent one bg">1</div>
+			<div class="teamCard-title accent one">Team Name</div>
+			<div class="statss">
+				<div class="teamCard-stats one">
+					<span class="value accent one">125</span>
+					<span class="description">Your Given Score</span>
+				</div><div class="teamCard-stats two">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Score</span>
+				</div><div class="teamCard-stats three">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Rank</span>
+				</div>
+			</div>
+		</div>
+		<div class="teamCard-extendedContent one">
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Innovativeness</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Creativity</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="teamCard">
+		<div class="teamCard-titleBar">
+			<div class="teamCard-index accent one bg">1</div>
+			<div class="teamCard-title accent one">Team Name</div>
+			<div class="statss">
+				<div class="teamCard-stats one">
+					<span class="value accent one">125</span>
+					<span class="description">Your Given Score</span>
+				</div><div class="teamCard-stats two">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Score</span>
+				</div><div class="teamCard-stats three">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Rank</span>
+				</div>
+			</div>
+		</div>
+		<div class="teamCard-extendedContent one">
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Innovativeness</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Creativity</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="teamCard">
+		<div class="teamCard-titleBar">
+			<div class="teamCard-index accent one bg">1</div>
+			<div class="teamCard-title accent one">Team Name</div>
+			<div class="statss">
+				<div class="teamCard-stats one">
+					<span class="value accent one">125</span>
+					<span class="description">Your Given Score</span>
+				</div><div class="teamCard-stats two">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Score</span>
+				</div><div class="teamCard-stats three">
+					<span class="value accent one">125</span>
+					<span class="description">Overall Rank</span>
+				</div>
+			</div>
+		</div>
+		<div class="teamCard-extendedContent one">
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Innovativeness</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Creativity</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+			<div class="teamCard-markingScheme">
+				<span class="description accent one">Technical Aspects</span>
+				<div>
+					<div class="button1 selected">1</div>
+					<div class="button2">2</div>
+					<div class="button3">3</div>
+					<div class="button4">4</div>
+					<div class="button5">5</div>
+					<div class="button6">6</div>
+					<div class="button7">7</div>
+					<div class="button8">8</div>
+					<div class="button9">9</div>
+					<div class="button10">10</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</div>
+<script type="text/javascript" src="js/Scoring.js"></script>
+<script type="text/javascript" src="js/pageControls.js"></script>
+</body>
+</html>
