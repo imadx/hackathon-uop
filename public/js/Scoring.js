@@ -4,23 +4,35 @@ var Scoring = {
 	ScoreSet_ranked: [],
 
 	MarkingScheme: [
-		"Innovativeness",
-		"Creativity",
-		"Technical Aspect",
-		"Marketing Aspect",
-		"Engagement"
+		"Completeness and Marketability",
+		"User Experience",
+		"Presentation + Demo",
+		"Difficulty of Developing",
+		"Video"
 	],
 
 	init: function(){
 		this.ScoreSet = [
-			{"id": "team1", "name": "Team Name 1", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
-			{"id": "team2", "name": "Team Name 2", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
-			{"id": "team3", "name": "Team Name 3", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
-			{"id": "team4", "name": "Team Name 4", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
-			{"id": "team5", "name": "Team Name 5", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
-			{"id": "team6", "name": "Team Name 6", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
-			{"id": "team7", "name": "Team Name 7", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
-			{"id": "team8", "name": "Team Name 8", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team1", "name": "IMAS", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team2", "name": "Vlearn", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team3", "name": "Crime Zone", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team4", "name": "Smart Billboard Advertising", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team5", "name": "VISITRAS", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team6", "name": "E-Mark", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team7", "name": "Kapuwa.com", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team8", "name": "Hola", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team9", "name": "Smart Shop Finder", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team10", "name": "Motify", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team11", "name": "Offline Translator", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team12", "name": "MiniTrack", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team13", "name": "Birthday Wish Generator", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team14", "name": "Client Side Speech Recognition API for HTML5 Apps", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team15", "name": "S-Sense", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team16", "name": "The Ruby Hunter", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team17", "name": "Wi-SmS", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team18", "name": "Sharing and Caring", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team19", "name": "Smart Reminder", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
+			{"id": "team20", "name": "Train Follower", "scores" : [0,0,0,0,0], "average": 0.0, "rank": 1 },
 		];
 		// this.updateScores();
 		this.createTeamCards();
@@ -29,7 +41,7 @@ var Scoring = {
 		var start = new Date().getTime();
 		for(team in this.ScoreSet){
 			var dataset = this.ScoreSet[team];
-			this.ScoreSet[team].average = this.average(dataset.scores);
+			this.ScoreSet[team].average = this.findUOverallScore(dataset.scores);
 		}
 
 		var sorted = _.sortBy(this.ScoreSet, function(team){ return team.average; });
@@ -109,7 +121,7 @@ var Scoring = {
 
 			TeamCard[0].id = dataSet[team].id;
 
-			$(TeamCard[0].childNodes[0]).find('.teamCard-index').text(++index);
+			$(TeamCard[0].childNodes[0]).find('.teamCard-index').text(TeamCard[0].id.replace('team',''));
 			$(TeamCard[0].childNodes[0]).find('.teamCard-title').text(dataSet[team].name);
 			$(TeamCard[0].childNodes[0]).find('.statss .teamCard-stats.one span.value').text(dataSet[team].average);
 			$(TeamCard[0].childNodes[0]).find('.statss .teamCard-stats.two span.value').text(dataSet[team].average);
@@ -124,11 +136,11 @@ var Scoring = {
 						'<div class="marking button3">3</div>' +
 						'<div class="marking button4">4</div>' +
 						'<div class="marking button5">5</div>' +
-						'<div class="marking button6">6</div>' +
-						'<div class="marking button7">7</div>' +
-						'<div class="marking button8">8</div>' +
-						'<div class="marking button9">9</div>' +
-						'<div class="marking button10">10</div>' +
+						// '<div class="marking button6">6</div>' +
+						// '<div class="marking button7">7</div>' +
+						// '<div class="marking button8">8</div>' +
+						// '<div class="marking button9">9</div>' +
+						// '<div class="marking button10">10</div>' +
 					'</div>' +
 				'</div>');
 				$(MarkingCriteria).find('.description').text(this.MarkingScheme[i]);
@@ -172,6 +184,16 @@ var Scoring = {
 			}
 
 		});
+	},
+
+	findUOverallScore: function(arr){
+		var t_finalScore = 0;
+		t_finalScore = arr[0] * 3;
+		t_finalScore += arr[1] * 3;
+		t_finalScore += arr[2] * 1.5;
+		t_finalScore += arr[3] * 1.5;
+		t_finalScore += arr[4];
+		return t_finalScore;
 	},
 	average: function (arr) {
 		return _.reduce(arr, function(memo, num)

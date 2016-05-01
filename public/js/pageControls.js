@@ -15,9 +15,10 @@ $(document).ready(function(){
 
 	Scoring.init();
 	setupLayout();
+	$(".teamCard-title").css('max-width', (($('.teamCard-index').width() - ('3em') +	$('.teamCard-stats').width()*3) + 'px'));
+
 
 	$(".teamCard-extendedContent").slideUp();
-
 
 	// hidingMenuElement.height(window_height - 200);
 	// contentElement.hide();
@@ -35,6 +36,8 @@ $(window).resize(function(){
 function setupLayout(){
 	$("#popupMenu .wrapper").css("top", (window_height - $("#popupMenu .wrapper").height())/2 + "px");
 	$("#popupMenu").hide();	
+	$(".teamCard-title").css('max-width', (($('.teamCard-index').outerWidth() - ('3em') +	$('.teamCard-stats').outerWidth()*3) + 'px'));
+	$(".teamCard-extendedContent").slideUp();
 }
 $("#popupMenu").click(function(e){
 	// console.log($(e.target).hasClass("material-icons"));

@@ -121,7 +121,13 @@ h1,h2{
 	padding: 1.5em;
 }
 .teamCard .teamCard-title{
+	/*width: 100px;*/
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	padding: 1.5em;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 .teamCard .statss{
 	float: right;
