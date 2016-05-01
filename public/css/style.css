@@ -117,8 +117,10 @@ h1,h2{
 	background-color: #1cb062;
 }
 .teamCard .teamCard-index{
-	display: inline-block;
 	padding: 1.5em;
+	width: 20px;
+	text-align: center;
+	float: left;
 }
 .teamCard .teamCard-title{
 	/*width: 100px;*/
@@ -128,9 +130,14 @@ h1,h2{
 	padding: 1.5em;
 	padding-top: 0;
 	padding-bottom: 0;
+	float: left;
+	box-sizing: border-box;
+	line-height: 60px;
+	width: calc(100% - 494px);
 }
 .teamCard .statss{
 	float: right;
+	width: 354px;
 }
 .teamCard .statss .teamCard-stats{
 	padding: 0.6em;
@@ -147,6 +154,7 @@ h1,h2{
 }
 .teamCard-titleBar{
 	/*height: 50px;*/
+	overflow: hidden;
 	box-shadow: 0 1px 3px -2px #000;
 }
 .teamCard-titleBar>div{

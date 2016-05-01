@@ -28,7 +28,7 @@ socket.on('init_confirm', function (data) {
 });
 socket.on('overall_avg_array', function (data) {
 	console.log("average array.. " + data);
-	for(i in data){
+	for(var i in data){
 		$("#team" + (Number(i)+1) + "_overallScore").text(parseFloat(data[i]).toFixed(2));
 		
 	}
